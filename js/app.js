@@ -7,10 +7,17 @@ if (barraEstado !== null) {
     if (comprasGuardadas.length > 0) {
         let montoTotal = comprasGuardadas.reduce((acc, prod) => acc + prod.precio, 0);
 
-        barraEstado.innerHTML = `<strong>¡Tienes ${comprasGuardadas.length} producto(s) en tu carrito!</strong> Total acumulado: $${montoTotal.toLocaleString('es-CL')} CLP. <a href="finanzas.html">Ir al carrito</a>`;
+        barraEstado.style.display = "block"; 
+        barraEstado.style.backgroundColor = "#bfd49b";
+        barraEstado.style.color = "#000000";
+        barraEstado.style.padding = "10px";
+        barraEstado.style.textAlign = "center";
+
+        barraEstado.innerHTML = `<strong>¡Tienes ${comprasGuardadas.length} producto(s) en tu carrito!</strong> Total acumulado: $${montoTotal.toLocaleString('es-CL')} CLP. <a href="finanzas.html" style="color: #000000; text-decoration: underline; margin-left: 10px;">Ir al carrito</a>`;
+    } else {
+        barraEstado.style.display = "none";
     }
 }
-
 
 // --- 2. EQUIPO (NOSOTROS.HTML) ---
 const equipoCosmetica = [
