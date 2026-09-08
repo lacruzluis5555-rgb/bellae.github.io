@@ -5,12 +5,13 @@
 }
 
 body {
+    background-color: #ffffff;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
     font-family: Arial, Helvetica, sans-serif;
-    color: #333;
+    color: #344E41;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -22,9 +23,10 @@ main {
     max-width: 1100px;
     margin: 40px auto;
 }
+
 main > div:empty, 
 main > section:empty {
-    display: none ;
+    display: none;
 }
 
 section {
@@ -32,33 +34,54 @@ section {
 }
 
 h2 {
-    color: #3f684d;
+    color: #344E41;
     margin-bottom: 15px;
 }
 
-.logo{
+.logo {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.logo img{
-    width: 45px;
-    height: 45px;
-    object-fit: contain;
+.logo img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain; 
 }
 
+.logo img {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+    background-color: #ffffff;
+    border-radius: 50%; 
+    padding: 6px; 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    background-color: #ffffff;
+    border-radius: 10px; 
+    padding: 6px;
+    border: 1px solid #A3B18A; 
+}
+
+/* Header */
 header {
-    background-color: white;
+    background-color: #344E41;
     padding: 20px 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: #333 solid;
+    border-bottom: 3px solid #588157;
 }
 
 header h1 {
-    color: #3f684d;
+    color: #ffffff;
 }
 
 nav ul {
@@ -69,40 +92,41 @@ nav ul {
 
 nav a {
     text-decoration: none;
-    color: #333;
+    color: #DAD7CD;
     font-weight: bold;
+    transition: color 0.2s ease;
 }
 
 nav a:hover {
-    color: #3f684d;
+    color: #ffffff;
 }
-/*diseño index*/
+
+/* diseño index */
 .cuadro-bienvenida {
-    background-color: #ffffff;
+    background-color: #fcfcfc;
     max-width: 550px;
     margin: 50px auto;
     padding: 40px 30px;
     border-radius: 12px;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
-    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid #A3B18A;
 }
 
 .cuadro-bienvenida h2 {
-    color: #2f4938;
+    color: #344E41;
     font-size: 1.8em;
     margin-bottom: 15px;
 }
 
 .cuadro-bienvenida p {
     font-size: 1.1em;
-    color: #555;
+    color: #3A5A40;
     margin-bottom: 25px;
     line-height: 1.5;
 }
 
-/*diseño nosotros */
-
+/* diseño nosotros */
 .pagina-nosotros {
     display: flex;
     flex-direction: column;
@@ -117,47 +141,67 @@ nav a:hover {
 }
 
 .quienes-somos-texto h2 {
-    color: #2f4938; 
+    color: #344E41; 
     font-size: 2.2em;
     margin-bottom: 20px;
 }
 
 .quienes-somos-texto p {
     line-height: 1.6;
-    color: #444;
+    color: #344E41;
     margin-bottom: 15px;
     text-align: justify; 
 }
- 
+
 .equipo-grid {
     display: flex;
     justify-content: center;
     flex-wrap: wrap; 
-    gap: 30px; 
+    gap: 25px; 
     width: 100%;
     max-width: 1000px;
 }
 
-#equipo > div {
+#equipo > div,
+.tarjeta-perfil {
     background-color: #ffffff;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #A3B18A;
     border-radius: 12px;
     padding: 25px 20px;
     width: 260px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
- 
-#equipo > div h3 {
-    color: #2f4938;
+
+/* Imágenes del equipo / perfil */
+#equipo img,
+.tarjeta-perfil img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 2px solid #A3B18A;
+}
+
+#equipo > div h3,
+.tarjeta-perfil h3 {
+    color: #344E41;
     margin-bottom: 5px;
 }
 
 #equipo > div h4, 
-#equipo > div p:first-of-type {
-    color: #444;
+.tarjeta-perfil h4 {
+    color: #588157;
     font-weight: bold;
     margin-bottom: 10px;
+}
+#equipo > div p:first-of-type {
+    color: #202020;
+    font-weight: bold;
 }
 
 #inicio {
@@ -166,17 +210,17 @@ nav a:hover {
     border-radius: 15px;
     display: flex;
     justify-content: center;
+    border: 1px solid #A3B18A;
 }
 
 #inicio h2 {
     font-size: 40px;
+    color: #344E41;
 }
-
-
 
 .btn-cta {
     display: inline-block;
-    background-color: #3f684d;
+    background-color: #588157;
     color: #ffffff !important;
     padding: 12px 28px;
     text-decoration: none;
@@ -187,12 +231,11 @@ nav a:hover {
 }
 
 .btn-cta:hover {
-    background-color: #2f4938;
+    background-color: #3A5A40;
     transform: translateY(-2px);
 }
 
-/*diseño del catalogo*/
-
+/* diseño del catalogo */
 #catalogo {
     display: flex;
     flex-wrap: wrap;
@@ -205,7 +248,7 @@ nav a:hover {
 
 .tarjeta-producto {
     background-color: #ffffff;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #A3B18A;
     border-radius: 10px;
     padding: 20px;
     width: 260px;
@@ -218,13 +261,13 @@ nav a:hover {
     width: 100%;
     height: 150px;
     object-fit: contain;
-    background-color: #f9f9f9;
+    background-color: #f4f3ef;
     border-radius: 6px;
     margin-bottom: 12px;
 }
 
 .tarjeta-producto h3 {
-    color: #2f4938;
+    color: #344E41;
     font-size: 1.1em;
     margin-bottom: 8px;
     text-align: center;
@@ -232,21 +275,19 @@ nav a:hover {
 
 .tarjeta-producto p {
     font-size: 0.9em;
-    color: #555;
+    color: #3A5A40;
     margin-bottom: 8px;
     text-align: center;
     line-height: 1.4;
 }
-
 
 .tarjeta-producto p:nth-of-type(1) {
     height: 40px;
     overflow: hidden;
 }
 
-
 .tarjeta-producto button {
-    background-color: #2e7d32;
+    background-color: #588157;
     color: white;
     border: none;
     padding: 10px;
@@ -259,12 +300,17 @@ nav a:hover {
 }
 
 .tarjeta-producto button:hover {
-    background-color: #1b5e20;
+    background-color: #3A5A40;
 }
 
-/*diseño formulario */
+.tarjeta-producto button:disabled {
+    background-color: #A3B18A;
+    cursor: not-allowed;
+}
+
+/* diseño formulario */
 button, input[type="submit"] {
-    background-color: #3f684d;
+    background-color: #588157;
     color: white;
     border: none;
     padding: 10px 18px;
@@ -276,7 +322,7 @@ button, input[type="submit"] {
 }
 
 button:hover, input[type="submit"]:hover {
-    background-color: #2f4938;
+    background-color: #3A5A40;
 }
 
 .contenedor-doble {
@@ -286,7 +332,7 @@ button:hover, input[type="submit"]:hover {
     background-color: #ffffff;
     padding: 40px;
     border-radius: 12px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #A3B18A;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
@@ -294,7 +340,6 @@ button:hover, input[type="submit"]:hover {
     flex: 1;
     margin-bottom: 0; 
 }
-
 
 form {
     display: flex;
@@ -305,18 +350,23 @@ form {
 input,
 textarea {
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #A3B18A;
     border-radius: 6px;
+    outline: none;
 }
 
-
+input:focus,
+textarea:focus {
+    border-color: #588157;
+}
 
 #calculadora {
     background-color: white;
     padding: 25px;
     border-radius: 10px;
 }
- table {
+
+table {
     width: 100%;
     max-width: 600px;
     margin: 20px auto;
@@ -325,29 +375,28 @@ textarea {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     border-radius: 8px;
     overflow: hidden;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #A3B18A;
 }
 
 th, td {
     padding: 12px 20px;
     text-align: left;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid #DAD7CD;
 }
 
 th {
-    background-color: #3f684d;
+    background-color: #3A5A40;
     color: white;
     font-weight: bold;
 }
 
 tr:hover {
-    background-color: #f9f9f9;
+    background-color: #f4f3ef;
 }
 
-/*footer*/
-
+/* footer */
 footer {
-    background-color: #2f4938;
+    background-color: #344E41;
     color: #ffffff;
     padding: 35px 5% 15px 5%;
     margin-top: auto;
@@ -370,7 +419,7 @@ footer {
 .footer-col h3 {
     margin-bottom: 15px;
     font-size: 1.2em;
-    border-bottom: 2px solid #3f684d;
+    border-bottom: 2px solid #588157;
     padding-bottom: 5px;
     color: #ffffff;
 }
@@ -385,12 +434,13 @@ footer {
 }
 
 .footer-col a {
-    color: #e8f5e9;
+    color: #DAD7CD;
     text-decoration: none;
 }
 
 .footer-col a:hover {
     text-decoration: underline;
+    color: #ffffff;
 }
 
 .footer-col p {
@@ -400,17 +450,18 @@ footer {
 }
 
 .link-mapa {
-    color: #a5d6a7 !important;
+    color: #A3B18A !important;
     font-weight: bold;
 }
 
 .footer-copy {
     text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: 1px solid rgba(163, 177, 138, 0.4);
     padding-top: 15px;
     font-size: 0.85em;
-    color: #cccccc;
+    color: #DAD7CD;
 }
+
 main {
     display: flex;
     justify-content: space-around;
@@ -421,20 +472,21 @@ main {
 .caja-servicio {
     width: 30%; 
     background-color: #ffffff;
-    border: 1px solid #cccccc;
+    border: 1px solid #A3B18A;
     padding: 15px;
 }
+
 #panelAdmin {
     display: none; 
-    width: 100% ;
-    max-width: 900px ;
-    margin: 30px auto ;
-    background-color: #ffffff ;
-    padding: 30px ;
-    border-radius: 12px ;
-    border: 1px solid #e0e0e0 ;
+    width: 100%;
+    max-width: 900px;
+    margin: 30px auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #A3B18A;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    clear: both ;
+    clear: both;
 }
 
 body:has(#panelAdmin:not([style*="display: none"])) .contenedor-doble {
@@ -442,11 +494,12 @@ body:has(#panelAdmin:not([style*="display: none"])) .contenedor-doble {
 }
 
 #panelAdmin table {
-    width: 100% ;
-    max-width: 100% ;
-    margin: 20px 0 0 0 ;
+    width: 100%;
+    max-width: 100%;
+    margin: 20px 0 0 0;
 }
-/*finanzas */
+
+/* finanzas */
 body:has(#resumen-carrito-finanzas) main {
     display: flex !important;
     flex-direction: row !important;
@@ -464,18 +517,20 @@ body:has(#resumen-carrito-finanzas) main {
     background-color: #ffffff !important;
     padding: 30px !important;
     border-radius: 12px !important;
-    border: 1px solid #e0e0e0 !important;
+    border: 1px solid #A3B18A !important;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
 }
+
 #seccion-finanzas {
     flex: 1.2 !important;
     min-width: 320px !important;
     background-color: #ffffff !important;
     padding: 30px !important;
     border-radius: 12px !important;
-    border: 1px solid #e0e0e0 !important;
+    border: 1px solid #A3B18A !important;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
 }
+
 #lista-carrito-finanzas {
     max-height: 450px !important;
     overflow-y: auto !important;
@@ -483,15 +538,46 @@ body:has(#resumen-carrito-finanzas) main {
     padding-right: 5px !important;
 }
 
-#lista-carrito-finanzas p,
-#lista-carrito-finanzas div {
-    padding: 8px 0 !important;
-    border-bottom: 1px solid #f0f0f0 !important;
-    font-size: 0.95em !important;
-    color: #444 !important;
+.lista-carrito {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
-/* Media query para Tablets*/
+.lista-carrito li {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 10px 0 !important;
+    border-bottom: 1px solid #DAD7CD !important;
+    gap: 15px !important;
+}
+
+.btn-quitar {
+    background-color: #344E41 !important;
+    color: #ffffff !important;
+    border: none !important;
+    padding: 6px 14px !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    font-size: 0.85em !important;
+    font-weight: bold !important;
+    white-space: nowrap !important;
+    transition: background-color 0.2s ease !important;
+}
+
+.btn-quitar:hover {
+    background-color: #588157 !important;
+}
+
+#mensaje-compra-exito {
+    color: #3A5A40;
+    font-weight: bold;
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* Media query para Tablets */
 @media (min-width: 481px) and (max-width: 768px) {
     main {
         width: 92%;
@@ -529,7 +615,7 @@ body:has(#resumen-carrito-finanzas) main {
     }
 }
 
-/* media para telefonos */
+/* Media query para teléfonos */
 @media (max-width: 480px) {
     header {
         flex-direction: column;
@@ -577,9 +663,13 @@ body:has(#resumen-carrito-finanzas) main {
 
     #productos,
     .grilla-catalogo {
-        grid-template-columns: 1fr;
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important; 
+        gap: 12px !important; 
+        width: 100% !important;
+        padding: 10px 5px !important;
     }
-
+    
     main {
         width: 95%;
         padding: 10px 0;
@@ -591,5 +681,85 @@ body:has(#resumen-carrito-finanzas) main {
     .caja-servicio {
         width: 100%;
         margin-bottom: 20px;
+    }
+
+    .pagina-nosotros .equipo-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+        width: 100% !important;
+    }
+
+    #equipo > div,
+    .tarjeta-perfil {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 12px 8px !important;
+    }
+
+    #equipo img,
+    .tarjeta-perfil img {
+        width: 80px !important;
+        height: 80px !important;
+        object-fit: cover !important;
+        border-radius: 50% !important;
+        margin: 0 auto 10px auto !important;
+    }
+
+    .tarjeta-perfil h3 {
+        font-size: 0.95em !important;
+    }
+
+    .tarjeta-perfil h4 {
+        font-size: 0.8em !important;
+    }
+
+    .tarjeta-perfil p {
+        font-size: 0.78em !important;
+        line-height: 1.3 !important;
+    }
+
+    .seccion-catalogo {
+        width: 100% !important;
+        padding: 0 !important;
+    }
+
+    #catalogo {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    #catalogo > div {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 10px 8px !important;
+        box-sizing: border-box !important;
+    }
+
+    #catalogo img {
+        width: 100% !important;
+        height: 110px !important;
+        object-fit: cover !important;
+        border-radius: 6px !important;
+    }
+
+    #catalogo h3 {
+        font-size: 0.85rem !important;
+        margin: 6px 0 4px 0 !important;
+    }
+
+    #catalogo p {
+        font-size: 0.75rem !important;
+        line-height: 1.2 !important;
+    }
+
+    #catalogo button {
+        width: 100% !important;
+        padding: 6px 4px !important;
+        font-size: 0.75rem !important;
     }
 }

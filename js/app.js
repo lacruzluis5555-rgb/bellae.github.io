@@ -1,69 +1,75 @@
-// Barra de Estado
+// --- 1. BARRA DE ESTADO DE COMPRAS ---
 const barraEstado = document.getElementById('barra-estado');
 
 if (barraEstado !== null) {
-  // Leemos lo que hay guardado en localStorage
-  let comprasGuardadas = JSON.parse(localStorage.getItem("mis_compras")) || [];
+    let comprasGuardadas = JSON.parse(localStorage.getItem("mis_compras")) || [];
 
-  if (comprasGuardadas.length > 0) {
-    // Si hay compras, calculamos el total y mostramos la alerta flotante
-    let montoTotal = 0;
-    comprasGuardadas.forEach(producto => montoTotal += producto.precio);
+    if (comprasGuardadas.length > 0) {
+        let montoTotal = comprasGuardadas.reduce((acc, prod) => acc + prod.precio, 0);
 
-    barraEstado.style.display = "block";
-    barraEstado.style.backgroundColor = "#e8f5e9"; // Verde claro
-    barraEstado.style.color = "#2e7d32"; // Texto verde oscuro
-    barraEstado.style.border = "1px solid #c8e6c9";
-    barraEstado.innerHTML = `<strong>¡Tienes ${comprasGuardadas.length} producto(s) en tu carrito!</strong> Total acumulado: $${montoTotal.toLocaleString('es-CL')} CLP. <a href="servicios.html" style="color: #2e7d32; text-decoration: underline;">Ir a productos</a>`;
-  }
+        barraEstado.innerHTML = `<strong>¡Tienes ${comprasGuardadas.length} producto(s) en tu carrito!</strong> Total acumulado: $${montoTotal.toLocaleString('es-CL')} CLP. <a href="finanzas.html">Ir al carrito</a>`;
+    }
 }
 
 
-// CLase 5 carga de dato pag.  nosotros 
+// --- 2. EQUIPO (NOSOTROS.HTML) ---
 const equipoCosmetica = [
     {
         nombre: "Luis La Cruz",
         rol: "Desarrollador y Fundador",
-        descripcion: "Encargado de la arquitectura de la plataforma web y la integración del catálogo de jabones artesanales."
+        descripcion: "Encargado de la arquitectura de la plataforma web y la integración del catálogo de jabones artesanales.",
+        imagen: "img/yo.jpg"
     },
     {
         nombre: "María Pérez",
         rol: "Especialista en Formulaciones",
-        descripcion: "Responsable del desarrollo de productos como el champú sólido y la crema de aloe vera."
+        descripcion: "Responsable del desarrollo de productos como el champú sólido y la crema de aloe vera.",
+        imagen: "https://bw.cemp.es/wp-content/uploads/2025/12/FORMULACION-COSMETICA-1.jpg"
     },
     {
         nombre: "Ana Gómez",
-        rol: "Director Comercial",
-        descripcion: "A cargo de la experiencia del cliente y la estrategia de marketing digital para nuestra línea natural."
+        rol: "Directora Comercial",
+        descripcion: "A cargo de la experiencia del cliente y la estrategia de marketing digital para nuestra línea natural.",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR48hbCUtNt1HLK54q56kul-nO1EP0H9DDd-hwXoh8ldyvSUZ8A4NLMS-nE&s=10"
+    },
+    {
+        nombre: "Juan Villareal",
+        rol: "Encargado Marketing",
+        descripcion: "A cargo de la publicidad de los productos y la web",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrvvr2kl0cwYMtBB40jrI_RdqMB-QxIApjb7raryFLnwIZooaifrjEzWwB&s=10"
+    },
+    {
+        nombre: "Jose Alerte",
+        rol: "Director de Ventas y Expansión",
+        descripcion: "A cargo de la estrategia comercial, alianzas de distribución y la experiencia del cliente para la línea de productos naturales.",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjMKp3CA_GKuYsHGq2HcK22c5mXIsTw405ulp-ZT4IEihBfT8ITDJksbMy&s=10"
     }
 ];
-
 
 const contenedorEquipo = document.getElementById('equipo');
 
 function renderizarEquipo() {
-    // Validacion para que se ejecute solo en nosotros.html
     if (contenedorEquipo !== null) {
         let tarjetasHTML = ""; 
 
-        equipoCosmetica.forEach(function(miembro) {
+        equipoCosmetica.forEach(miembro => {
             tarjetasHTML += `
-                <div class="tarjeta-perfil" style="border: 1px solid #ccc; padding: 15px; margin: 10px; text-align: center;">
+                <div class="tarjeta-perfil">
+                    <img src="${miembro.imagen}" alt="${miembro.nombre}">
                     <h3>${miembro.nombre}</h3>
-                    <h4 style="color: #4CAF50;">${miembro.rol}</h4>
+                    <h4>${miembro.rol}</h4>
                     <p>${miembro.descripcion}</p>
                 </div>
             `;
         });
 
-        // entra la info
         contenedorEquipo.innerHTML = tarjetasHTML;
     }
 }
 renderizarEquipo();
 
-// CLASE 6 catalogo
 
+// --- 3. CATÁLOGO DE PRODUCTOS (SERVICIOS.HTML) ---
 let productosCosmetica = JSON.parse(localStorage.getItem("stock_productos")) || [
     {
         id: 1,
@@ -88,24 +94,52 @@ let productosCosmetica = JSON.parse(localStorage.getItem("stock_productos")) || 
         stock: 8,
         imagen: "https://www.ceroresiduo.com/wp-content/uploads/178008003.jpg",
         descripcion: "Fortalece el cabello desde la raíz, sin sulfatos ni parabenos."
-    }
+    },
+    {
+        id: 4,
+        nombre: "Sérum Capilar Nutritivo",
+        precio: 8000,
+        stock: 5,
+        imagen: "img/serum.jfif",
+        descripcion: "Fortalece el cabello desde la raíz, sin sulfatos ni parabenos."
+    },
+    {
+        id: 5,
+        nombre: "Mascarilla de Arcilla Rosa",
+        precio: 7500,
+        stock: 8,
+        imagen: "img/mascarilla.webp",
+        descripcion: "Desintoxica y devuelve la luminosidad a tu rostro."
+    },
+    {
+        id: 6,
+        nombre: "Bálsamo Labial de Karité",
+        precio: 3000,
+        stock: 12,
+        imagen: "img/balsamo2.webp", 
+        descripcion: "Protección y suavidad duradera para tus labios."
+    }   
 ];
-
-let totalAcumulado = 0;
-let totalProductos = 0;
 
 const contenedorCatalogo = document.getElementById('catalogo');
 const txtTotal = document.getElementById('monto-total');
 const txtCantidad = document.getElementById('cantidad-items');
 
-if (contenedorCatalogo !== null) {
+function renderizarCatalogo() {
+    if (contenedorCatalogo === null) return;
+
     contenedorCatalogo.innerHTML = "";
     
+    let compras = JSON.parse(localStorage.getItem("mis_compras")) || [];
+    let totalAcumulado = compras.reduce((acc, p) => acc + p.precio, 0);
+    let totalProductos = compras.length;
+
+    if (txtTotal) txtTotal.innerText = totalAcumulado.toLocaleString('es-CL');
+    if (txtCantidad) txtCantidad.innerText = totalProductos;
+
     productosCosmetica.forEach(producto => {
         const tarjeta = document.createElement('div');
         tarjeta.className = "tarjeta-producto";
-
-        // Determinamos si ya está agotado el stock 0
         const estaAgotado = producto.stock === 0;
 
         tarjeta.innerHTML = `
@@ -113,178 +147,130 @@ if (contenedorCatalogo !== null) {
             <h3>${producto.nombre}</h3>
             <p>${producto.descripcion}</p>
             <p><strong>Precio:</strong> $${producto.precio.toLocaleString('es-CL')} CLP</p>
-            <p>Stock disponible: <strong id="stock-${producto.id}">${producto.stock}</strong></p>
-            <button id="btn-comprar-${producto.id}" class="btn-comprar" ${estaAgotado ? 'disabled' : ''} style="${estaAgotado ? 'background-color: #9e9e9e; cursor: not-allowed;' : ''}">
+            <p>Stock disponible: <strong>${producto.stock}</strong></p>
+            <button class="btn-comprar" ${estaAgotado ? 'disabled' : ''} onclick="agregarAlCarrito(${producto.id})">
                 ${estaAgotado ? 'Agotado' : 'Añadir al Carrito'}
             </button>
         `;
 
         contenedorCatalogo.appendChild(tarjeta);
-
-        // Eventos de compra
-        const botonCTA = tarjeta.querySelector(`#btn-comprar-${producto.id}`);
-        botonCTA.addEventListener('click', () => {
-            if (producto.stock > 0) {
-                producto.stock--;
-                totalAcumulado += producto.precio;
-                totalProductos++;
-
-                // 2. Guardamos las compras en localStorage
-                let compras = JSON.parse(localStorage.getItem("mis_compras")) || [];
-                compras.push({ nombre: producto.nombre, precio: producto.precio });
-                localStorage.setItem("mis_compras", JSON.stringify(compras));
-
-                // 3. ¡IMPORTANTE! Guardamos el stock actualizado en localStorage para que no se pierda al recargar
-                localStorage.setItem("stock_productos", JSON.stringify(productosCosmetica));
-
-                // Actualizaciones en pantalla
-                document.getElementById(`stock-${producto.id}`).innerText = producto.stock;
-                if (txtTotal) txtTotal.innerText = totalAcumulado.toLocaleString('es-CL');
-                if (txtCantidad) txtCantidad.innerText = totalProductos;
-
-                // Control de stock a 0
-                if (producto.stock === 0) {
-                    botonCTA.innerText = "Agotado";
-                    botonCTA.style.backgroundColor = "#9e9e9e";
-                    botonCTA.style.cursor = "not-allowed";
-                    botonCTA.disabled = true;
-                }
-            }
-        });
-    });
-}
-// clase 7 localstorage - Login Admin
-let formLogin = document.getElementById("loginForm");
-
-if (formLogin !== null) {
-    formLogin.addEventListener("submit", function(e) {
-        e.preventDefault(); 
-        
-        let user = document.getElementById("usuario").value.trim();
-        let pass = document.getElementById("clave").value.trim();
-        let msg = document.getElementById("mensajeLogin");
-
-        // Validacion de clave 
-        if (user === "admin" && pass === "1234") {
-            msg.innerText = "";
-            
-            // Ocultamos login
-            document.getElementById("seccionLogin").style.display = "none";
-            let seccionContacto = document.getElementById("seccion-contacto");
-            if (seccionContacto) seccionContacto.style.display = "none";
-
-            // Mostrar panel de admin
-            let panel = document.getElementById("panelAdmin");
-            panel.style.display = "block";
-
-            // ventas en tabla
-            cargarTablaVentas();
-        } else {
-            msg.innerText = "Usuario o contraseña incorrectos.";
-            msg.style.color = "red";
-        }
     });
 }
 
-function cargarTablaVentas() {
-    let tabla = document.getElementById("tablaVentas");
-    let ventas = JSON.parse(localStorage.getItem("mis_compras")) || [];
-    
-    tabla.innerHTML = ""; 
+window.agregarAlCarrito = function(idProducto) {
+    let producto = productosCosmetica.find(p => p.id === idProducto);
 
-    if (ventas.length === 0) {
-        tabla.innerHTML = "<tr><td colspan='2'>No hay ventas registradas en LocalStorage</td></tr>";
-    } else {
-        for (let i = 0; i < ventas.length; i++) {
-            tabla.innerHTML += "<tr>" +
-                "<td>" + ventas[i].nombre + "</td>" +
-                "<td>$" + ventas[i].precio + " CLP</td>" +
-            "</tr>";
+    if (producto && producto.stock > 0) {
+        producto.stock--;
+
+        let compras = JSON.parse(localStorage.getItem("mis_compras")) || [];
+        compras.push({ id: producto.id, nombre: producto.nombre, precio: producto.precio });
+
+        localStorage.setItem("mis_compras", JSON.stringify(compras));
+        localStorage.setItem("stock_productos", JSON.stringify(productosCosmetica));
+
+        renderizarCatalogo();
+    }
+};
+
+renderizarCatalogo();
+
+
+// --- 4. RESUMEN DE CARRITO Y COMPRA (FINANZAS.HTML) ---
+function renderizarCarritoFinanzas() {
+    const contenedor = document.getElementById("lista-carrito-finanzas");
+    const txtSubtotal = document.getElementById("subtotal-finanzas");
+    const btnComprar = document.getElementById("btn-comprar-finanzas");
+
+    if (contenedor === null) return;
+
+    let compras = JSON.parse(localStorage.getItem("mis_compras")) || [];
+    let total = 0;
+
+    if (compras.length === 0) {
+        contenedor.innerHTML = "<p>No has agregado productos al carrito todavía.</p>";
+        if (txtSubtotal) txtSubtotal.innerText = "0";
+        if (btnComprar) btnComprar.style.display = "none";
+        return;
+    }
+
+    if (btnComprar) btnComprar.style.display = "block";
+
+    let htmlList = "<ul class='lista-carrito'>";
+    compras.forEach((item, index) => {
+        total += item.precio;
+        htmlList += `
+            <li>
+                <span>${item.nombre} - $${item.precio.toLocaleString('es-CL')} CLP</span>
+                <button class="btn-quitar" onclick="quitarDelCarrito(${index})">Quitar</button>
+            </li>
+        `;
+    });
+    htmlList += "</ul>";
+
+    contenedor.innerHTML = htmlList;
+    if (txtSubtotal) txtSubtotal.innerText = total.toLocaleString('es-CL');
+}
+
+window.quitarDelCarrito = function(indexEnCarrito) {
+    let compras = JSON.parse(localStorage.getItem("mis_compras")) || [];
+    let productoEliminado = compras[indexEnCarrito];
+
+    if (productoEliminado) {
+        let prodEnStock = productosCosmetica.find(p => p.id === productoEliminado.id || p.nombre === productoEliminado.nombre);
+        if (prodEnStock) {
+            prodEnStock.stock++;
         }
+
+        compras.splice(indexEnCarrito, 1);
+
+        localStorage.setItem("mis_compras", JSON.stringify(compras));
+        localStorage.setItem("stock_productos", JSON.stringify(productosCosmetica));
+
+        renderizarCarritoFinanzas();
     }
+};
+
+const btnComprarFinanzas = document.getElementById("btn-comprar-finanzas");
+if (btnComprarFinanzas !== null) {
+    btnComprarFinanzas.addEventListener("click", function() {
+        let compras = JSON.parse(localStorage.getItem("mis_compras")) || [];
+        if (compras.length === 0) return;
+
+        let totalMonto = compras.reduce((acc, prod) => acc + prod.precio, 0);
+
+        let nuevaVenta = {
+            idOrden: "ORD-" + Date.now().toString().slice(-5),
+            fecha: new Date().toLocaleString('es-CL'),
+            productos: compras,
+            total: totalMonto
+        };
+
+        let historialVentas = JSON.parse(localStorage.getItem("ventas_registradas")) || [];
+        historialVentas.push(nuevaVenta);
+        localStorage.setItem("ventas_registradas", JSON.stringify(historialVentas));
+
+        localStorage.removeItem("mis_compras");
+
+        const msgExito = document.getElementById("mensaje-compra-exito");
+        if (msgExito) {
+            msgExito.innerText = "¡Compra realizada con éxito! Orden registrada en el Panel Admin.";
+        }
+
+        renderizarCarritoFinanzas();
+    });
 }
 
-//CLase 8 contacto
-let formContacto = document.getElementById("formContacto");
+renderizarCarritoFinanzas();
 
-if (formContacto !== null) {
-  formContacto.addEventListener("submit", function(e) {
-    e.preventDefault(); 
 
-    let nombre = document.getElementById("nombreContacto").value.trim();
-    let correo = document.getElementById("correoContacto").value.trim();
-    let telefono = document.getElementById("telefonoContacto").value.trim();
-    let mensaje = document.getElementById("mensajeTexto").value.trim();
-
-    let errorNombre = document.getElementById("errorNombre");
-    let errorCorreo = document.getElementById("errorCorreo");
-    let errorTelefono = document.getElementById("errorTelefono");
-    let errorMensaje = document.getElementById("errorMensaje");
-    let txtMsg = document.getElementById("msgContacto");
-
-    // Limpiamos los mensajes
-    errorNombre.innerText = "";
-    errorCorreo.innerText = "";
-    errorTelefono.innerText = "";
-    errorMensaje.innerText = "";
-    txtMsg.innerText = "";
-
-    //  Variable para saber si encontramos algún error
-    let hayError = false; 
-    
-    // Validar Nombre
-    if (nombre === "") {
-      errorNombre.innerText = "Este campo no puede quedar vacío";
-      errorNombre.style.color = "red";
-      hayError = true;
-    }
-
-    // Validar Correo
-    if (correo === "") {
-      errorCorreo.innerText = "Este campo no puede quedar vacío";
-      errorCorreo.style.color = "red";
-      hayError = true;
-    }
-
-    // Validar Teléfono 
-    if (telefono === "") {
-      errorTelefono.innerText = "Este campo no puede quedar vacío";
-      errorTelefono.style.color = "red";
-      hayError = true;
-    } else if (isNaN(telefono)) {
-      errorTelefono.innerText = "Solo se permiten números";
-      errorTelefono.style.color = "red";
-      hayError = true;
-    } else if (telefono.length < 8) {
-      errorTelefono.innerText = "Debe tener al menos 8 números";
-      errorTelefono.style.color = "red";
-      hayError = true;
-    }
-
-    // Validar Mensaje
-    if (mensaje === "") {
-      errorMensaje.innerText = "Este campo no puede quedar vacío";
-      errorMensaje.style.color = "red";
-      hayError = true;
-    }
-
-    // Si pasamos todas las pruebas 
-    if (hayError === false) {
-      txtMsg.innerText = "Mensaje enviado con éxito. ";
-      txtMsg.style.color = "green";
-      formContacto.reset();
-    }
-  });
-}
-
-// clase  finaziamento
+// --- 5. CALCULADORA PRESUPUESTO (FINANZAS.HTML) ---
 let formFinanzas = document.getElementById("formFinanzas");
 
 if (formFinanzas !== null) {
     formFinanzas.addEventListener("submit", function(e) {
         e.preventDefault();
 
-        //variables
         let dominio = parseFloat(document.getElementById("costoDominio").value.trim());
         let hosting = parseFloat(document.getElementById("costoHosting").value.trim());
         let tarifa = parseFloat(document.getElementById("tarifaHora").value.trim());
@@ -295,56 +281,145 @@ if (formFinanzas !== null) {
         let divResultado = document.getElementById("resultadoFinanzas");
         let divAlerta = document.getElementById("alertaAds");
 
-        // Validacion de tipos numericos
-        if (isNaN(dominio) || isNaN(hosting) || isNaN(tarifa) || isNaN(horas) || isNaN(cpc) || isNaN(clics)) {
-            divResultado.innerText = "Error: Por favor ingresa valores numéricos válidos en todos los campos.";
-            divResultado.style.color = "red";
+        if (isNaN(dominio) || isNaN(hosting) || isNaN(tarifa) || isNaN(horas) || isNaN(cpc) || isNaN(clics) ||
+            dominio < 0 || hosting < 0 || tarifa < 0 || horas < 0 || cpc < 0 || clics < 0) {
+            divResultado.innerText = "Error: Por favor ingresa valores numéricos válidos y positivos.";
             divAlerta.innerHTML = "";
             return;
         }
 
-        // Operaciones matematicas 
         let manoObra = tarifa * horas;
         let costoAdsMensual = cpc * clics;
         let totalProyecto = dominio + hosting + manoObra + costoAdsMensual;
 
-        divResultado.style.color = "#333";
-        divResultado.innerHTML = 
-            "<p><strong>Costo Mano de Obra:</strong> $" + manoObra.toLocaleString('es-CL') + " CLP</p>" +
-            "<p><strong>Presupuesto Ads Mensual:</strong> $" + costoAdsMensual.toLocaleString('es-CL') + " CLP</p>" +
-            "<h3>Costo Total del Proyecto: $" + totalProyecto.toLocaleString('es-CL') + " CLP</h3>";
+        divResultado.innerHTML = `
+            <p><strong>Costo Mano de Obra:</strong> $${manoObra.toLocaleString('es-CL')} CLP</p>
+            <p><strong>Presupuesto Ads Mensual:</strong> $${costoAdsMensual.toLocaleString('es-CL')} CLP</p>
+            <h3>Costo Total del Proyecto: $${totalProyecto.toLocaleString('es-CL')} CLP</h3>
+        `;
 
-        //Si Ads supera $50.000 muestra advertencia
         if (costoAdsMensual > 50000) {
-            divAlerta.innerHTML = 
-                "<div style='background-color: #fff3cd; color: #856404; padding: 15px; border: 1px solid #ffeeba; margin-top: 15px; border-radius: 5px;'>" +
-                    "<p>⚠️ Presupuesto de marketing alto para fase de lanzamiento</p>" +
-                    "<a href='finanzas.html' class='btn-cta'>Contratar campaña de Ads</a>" +
-                "</div>";
+            divAlerta.innerHTML = `
+                <div class="alerta-ads">
+                    <p>⚠️ Presupuesto de marketing alto para fase de lanzamiento</p>
+                    <a href="finanzas.html" class="btn-cta">Contratar campaña de Ads</a>
+                </div>
+            `;
         } else {
             divAlerta.innerHTML = "";
         }
     });
 }
 
-//Productos 
-let contenedorCarritoFinanzas = document.getElementById("lista-carrito-finanzas");
 
-if (contenedorCarritoFinanzas !== null) {
-    let compras = JSON.parse(localStorage.getItem("mis_compras")) || [];
+// --- 6. FORMULARIO DE CONTACTO (CONTACTO.HTML) ---
+let formContacto = document.getElementById("formContacto");
 
-    if (compras.length === 0) {
-        contenedorCarritoFinanzas.innerHTML = "<p>No has agregado productos al carrito todavía.</p>";
-    } else {
-        let tablaHTML = "<ul>";
-        let subtotal = 0;
+if (formContacto !== null) {
+    formContacto.addEventListener("submit", function(e) {
+        e.preventDefault(); 
 
-        for (let i = 0; i < compras.length; i++) {
-            tablaHTML += "<li>" + compras[i].nombre + " - $" + compras[i].precio + " CLP</li>";
-            subtotal = subtotal + compras[i].precio;
+        let nombre = document.getElementById("nombreContacto").value.trim();
+        let correo = document.getElementById("correoContacto").value.trim();
+        let telefono = document.getElementById("telefonoContacto").value.trim();
+        let mensaje = document.getElementById("mensajeTexto").value.trim();
+
+        let errorNombre = document.getElementById("errorNombre");
+        let errorCorreo = document.getElementById("errorCorreo");
+        let errorTelefono = document.getElementById("errorTelefono");
+        let errorMensaje = document.getElementById("errorMensaje");
+        let txtMsg = document.getElementById("msgContacto");
+
+        errorNombre.innerText = "";
+        errorCorreo.innerText = "";
+        errorTelefono.innerText = "";
+        errorMensaje.innerText = "";
+        txtMsg.innerText = "";
+
+        let hayError = false; 
+
+        if (nombre === "") {
+            errorNombre.innerText = "Este campo no puede quedar vacío";
+            hayError = true;
         }
 
-        tablaHTML += "</ul><p><strong>Subtotal de Productos: $" + subtotal + " CLP</strong></p>";
-        contenedorCarritoFinanzas.innerHTML = tablaHTML;
+        if (correo === "") {
+            errorCorreo.innerText = "Este campo no puede quedar vacío";
+            hayError = true;
+        }
+
+        if (telefono === "") {
+            errorTelefono.innerText = "Este campo no puede quedar vacío";
+            hayError = true;
+        } else if (isNaN(telefono)) {
+            errorTelefono.innerText = "Solo se permiten números";
+            hayError = true;
+        } else if (telefono.length < 8) {
+            errorTelefono.innerText = "Debe tener al menos 8 números";
+            hayError = true;
+        }
+
+        if (mensaje === "") {
+            errorMensaje.innerText = "Este campo no puede quedar vacío";
+            hayError = true;
+        }
+
+        if (!hayError) {
+            txtMsg.innerText = "Mensaje enviado con éxito.";
+            formContacto.reset();
+        }
+    });
+}
+
+
+// --- 7. LOGIN Y PANEL DE ADMIN (CONTACTO.HTML) ---
+let formLogin = document.getElementById("loginForm");
+
+if (formLogin !== null) {
+    formLogin.addEventListener("submit", function(e) {
+        e.preventDefault(); 
+        
+        let user = document.getElementById("usuario").value.trim();
+        let pass = document.getElementById("clave").value.trim();
+        let msg = document.getElementById("mensajeLogin");
+
+        if (user === "admin" && pass === "1234") {
+            msg.innerText = "";
+            document.getElementById("seccionLogin").style.display = "none";
+            let seccionContacto = document.getElementById("seccion-contacto");
+            if (seccionContacto) seccionContacto.style.display = "none";
+
+            let panel = document.getElementById("panelAdmin");
+            if (panel) panel.style.display = "block";
+
+            cargarTablaVentas();
+        } else {
+            msg.innerText = "Usuario o contraseña incorrectos.";
+        }
+    });
+}
+
+function cargarTablaVentas() {
+    let tabla = document.getElementById("tablaVentas");
+    if (!tabla) return;
+
+    let ventas = JSON.parse(localStorage.getItem("ventas_registradas")) || [];
+    tabla.innerHTML = ""; 
+
+    if (ventas.length === 0) {
+        tabla.innerHTML = "<tr><td colspan='3'>No hay ventas registradas</td></tr>";
+    } else {
+        ventas.forEach(venta => {
+            let listaNombres = venta.productos ? venta.productos.map(p => p.nombre).join(", ") : venta.nombre;
+            let totalPago = venta.total ? venta.total.toLocaleString('es-CL') : venta.precio;
+
+            tabla.innerHTML += `
+                <tr>
+                    <td><strong>${venta.idOrden || 'ORD-000'}</strong><br><small>${venta.fecha || ''}</small></td>
+                    <td>${listaNombres}</td>
+                    <td><strong>$${totalPago} CLP</strong></td>
+                </tr>
+            `;
+        });
     }
 }
