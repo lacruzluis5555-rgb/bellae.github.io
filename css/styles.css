@@ -620,18 +620,31 @@ body:has(#resumen-carrito-finanzas) main {
     header {
         flex-direction: column;
         align-items: center;
-        text-align: center;
-        padding: 15px;
+        padding: 12px 10px !important;
+    }
+
+    .logo img {
+        width: 38px !important;
+        height: 38px !important;
+    }
+
+    header h1 {
+        font-size: 1.2rem !important;
+        margin: 5px 0 !important;
     }
 
     header nav ul {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        padding: 0;
-        margin: 10px 0 0 0;
+        flex-direction: row !important;
+        flex-wrap: wrap !important; 
+        justify-content: center !important;
+        gap: 10px 15px !important;
+        margin-top: 8px !important;
     }
+
+    nav a {
+        font-size: 0.85rem !important;
+    }
+}
 
     .logo {
         justify-content: center;
