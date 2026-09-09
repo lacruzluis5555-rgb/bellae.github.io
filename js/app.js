@@ -235,6 +235,10 @@ window.quitarDelCarrito = function(indexEnCarrito) {
         localStorage.setItem("stock_productos", JSON.stringify(productosCosmetica));
 
         renderizarCarritoFinanzas();
+        
+        // Limpiar el mensaje de éxito si el usuario quita cosas después de haber comprado antes
+        const msgExito = document.getElementById("mensaje-compra-exito");
+        if (msgExito) msgExito.innerText = "";
     }
 };
 
@@ -257,11 +261,17 @@ if (btnComprarFinanzas !== null) {
         historialVentas.push(nuevaVenta);
         localStorage.setItem("ventas_registradas", JSON.stringify(historialVentas));
 
+        // Vaciar carrito
         localStorage.removeItem("mis_compras");
 
+        // MOSTRAR MENSAJE DE ÉXITO EN VERDE
         const msgExito = document.getElementById("mensaje-compra-exito");
         if (msgExito) {
-            msgExito.innerText = "¡Compra realizada con éxito! Orden registrada en el Panel Admin.";
+            msgExito.innerText = "¡Compra realizada con éxito! Tu orden ha sido procesada.";
+            msgExito.style.color = "green"; 
+            msgExito.style.fontWeight = "bold"; 
+            msgExito.style.marginTop = "15px"; 
+            msgExito.style.display = "block";
         }
 
         renderizarCarritoFinanzas();
@@ -269,7 +279,6 @@ if (btnComprarFinanzas !== null) {
 }
 
 renderizarCarritoFinanzas();
-
 
 // --- 5. CALCULADORA PRESUPUESTO (FINANZAS.HTML) ---
 let formFinanzas = document.getElementById("formFinanzas");
