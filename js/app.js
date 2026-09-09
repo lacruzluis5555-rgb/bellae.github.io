@@ -291,9 +291,13 @@ if (formFinanzas !== null) {
         if (isNaN(dominio) || isNaN(hosting) || isNaN(tarifa) || isNaN(horas) || isNaN(cpc) || isNaN(clics) ||
             dominio < 0 || hosting < 0 || tarifa < 0 || horas < 0 || cpc < 0 || clics < 0) {
             divResultado.innerText = "Error: Por favor ingresa valores numéricos válidos y positivos.";
+            divResultado.style.color = "red"; // Pinta el error en rojo
             divAlerta.innerHTML = "";
             return;
         }
+
+        // Restaura el color normal (quitamos el rojo) si la operación es exitosa
+        divResultado.style.color = "";
 
         let manoObra = tarifa * horas;
         let costoAdsMensual = cpc * clics;
@@ -318,7 +322,6 @@ if (formFinanzas !== null) {
     });
 }
 
-
 // --- 6. FORMULARIO DE CONTACTO (CONTACTO.HTML) ---
 let formContacto = document.getElementById("formContacto");
 
@@ -337,6 +340,7 @@ if (formContacto !== null) {
         let errorMensaje = document.getElementById("errorMensaje");
         let txtMsg = document.getElementById("msgContacto");
 
+        // Limpiamos los mensajes antes de validar
         errorNombre.innerText = "";
         errorCorreo.innerText = "";
         errorTelefono.innerText = "";
@@ -347,37 +351,43 @@ if (formContacto !== null) {
 
         if (nombre === "") {
             errorNombre.innerText = "Este campo no puede quedar vacío";
+            errorNombre.style.color = "red"; // Pinta el texto de rojo
             hayError = true;
         }
 
         if (correo === "") {
             errorCorreo.innerText = "Este campo no puede quedar vacío";
+            errorCorreo.style.color = "red"; // Pinta el texto de rojo
             hayError = true;
         }
 
         if (telefono === "") {
             errorTelefono.innerText = "Este campo no puede quedar vacío";
+            errorTelefono.style.color = "red"; // Pinta el texto de rojo
             hayError = true;
         } else if (isNaN(telefono)) {
             errorTelefono.innerText = "Solo se permiten números";
+            errorTelefono.style.color = "red"; // Pinta el texto de rojo
             hayError = true;
         } else if (telefono.length < 8) {
             errorTelefono.innerText = "Debe tener al menos 8 números";
+            errorTelefono.style.color = "red"; // Pinta el texto de rojo
             hayError = true;
         }
 
         if (mensaje === "") {
             errorMensaje.innerText = "Este campo no puede quedar vacío";
+            errorMensaje.style.color = "red"; // Pinta el texto de rojo
             hayError = true;
         }
 
         if (!hayError) {
             txtMsg.innerText = "Mensaje enviado con éxito.";
+            txtMsg.style.color = "green"; // Pinta el éxito en verde
             formContacto.reset();
         }
     });
 }
-
 
 // --- 7. LOGIN Y PANEL DE ADMIN (CONTACTO.HTML) ---
 let formLogin = document.getElementById("loginForm");
@@ -392,6 +402,7 @@ if (formLogin !== null) {
 
         if (user === "admin" && pass === "1234") {
             msg.innerText = "";
+            msg.style.color = ""; // Limpiamos el color
             document.getElementById("seccionLogin").style.display = "none";
             let seccionContacto = document.getElementById("seccion-contacto");
             if (seccionContacto) seccionContacto.style.display = "none";
@@ -402,6 +413,7 @@ if (formLogin !== null) {
             cargarTablaVentas();
         } else {
             msg.innerText = "Usuario o contraseña incorrectos.";
+            msg.style.color = "red"; // Pinta el error de login en rojo
         }
     });
 }
